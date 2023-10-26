@@ -1,6 +1,6 @@
-module github.com/DaRealFreak/cloudflare-bp-go
+module github.com/m41k1n4177/cloudflare-bp-go
 
-go 1.17
+go 1.21
 
 require (
 	github.com/EDDYCJY/fake-useragent v0.2.0
