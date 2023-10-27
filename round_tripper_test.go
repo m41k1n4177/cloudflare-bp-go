@@ -127,7 +127,7 @@ func TestAddByPassHTTPProxy(t *testing.T) {
 		Transport: &http.Transport{
 			Proxy: http.ProxyURL(proxyURL),
 			TLSClientConfig: &tls.Config{
-				CurvePreferences: []tls.CurveID{tls.X25519, tls.CurveP256, tls.CurveP384},
+				CurvePreferences: []tls.CurveID{tls.CurveP256, tls.CurveP384, tls.CurveP521, tls.X25519},
 			},
 		},
 	}
