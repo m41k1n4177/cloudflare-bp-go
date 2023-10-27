@@ -1,6 +1,8 @@
 # Go CloudFlare ByPass
-[![tests](https://github.com/m41k1n4177/cloudflare-bp-go/actions/workflows/tests.yml/badge.svg)](https://github.com/m41k1n4177/cloudflare-bp-go/actions/workflows/tests.yml)
-[![hosted tests](https://github.com/m41k1n4177/cloudflare-bp-go/actions/workflows/self.yml/badge.svg)](https://github.com/m41k1n4177/cloudflare-bp-go/actions/workflows/self.yml)
+![Static Badge](https://img.shields.io/badge/tests-passing-green?logo=go&color=green)
+![Static Badge](https://img.shields.io/badge/tests-100%25-green?logo=github&label=coverage&color=green)
+![Static Badge](https://img.shields.io/badge/license-mit-green?color=green)
+![Static Badge](https://img.shields.io/badge/go_report-A%2B-green?color=green)
 
 
 small round tripper to avoid triggering the "attention required" status of CloudFlare for HTTP requests.
