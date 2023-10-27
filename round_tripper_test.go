@@ -85,12 +85,12 @@ func TestApplyCloudFlareByPassDefinedTransport(t *testing.T) {
 func TestAddByPassSocksProxy(t *testing.T) {
 
 	auth := proxy.Auth{
-		User:     os.Getenv("PROXY_USER_SOCKS5"),
-		Password: os.Getenv("PROXY_PASS_SOCKS5"),
+		User:     os.Getenv("PROXY_USER"),
+		Password: os.Getenv("PROXY_PASS"),
 	}
 	dialer, err := proxy.SOCKS5(
 		"tcp",
-		fmt.Sprintf("%s:%s", os.Getenv("PROXY_HOST_SOCKS5"), os.Getenv("PROXY_PORT_SOCKS5")),
+		fmt.Sprintf("%s:%s", os.Getenv("PROXY_HOST"), os.Getenv("PROXY_PORT_SOCKS5")),
 		&auth,
 		proxy.Direct,
 	)
@@ -118,8 +118,8 @@ func TestAddByPassHTTPProxy(t *testing.T) {
 	proxyURL, _ := url.Parse(
 		fmt.Sprintf(
 			"http://%s:%s@%s:%s",
-			url.QueryEscape(os.Getenv("PROXY_USER_HTTP")), url.QueryEscape(os.Getenv("PROXY_PASS_HTTP")),
-			url.QueryEscape(os.Getenv("PROXY_HOST_HTTP")), url.QueryEscape(os.Getenv("PROXY_PORT_HTTP")),
+			url.QueryEscape(os.Getenv("PROXY_USER")), url.QueryEscape(os.Getenv("PROXY_PASS")),
+			url.QueryEscape(os.Getenv("PROXY_HOST")), url.QueryEscape(os.Getenv("PROXY_PORT_HTTP")),
 		),
 	)
 
