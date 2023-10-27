@@ -57,7 +57,7 @@ func (ug *cloudFlareRoundTripper) RoundTrip(r *http.Request) (*http.Response, er
 
 func getCloudFlareTLSConfiguration() *tls.Config {
 	return &tls.Config{
-		CurvePreferences: []tls.CurveID{tls.X25519, tls.CurveP256},
+		CurvePreferences: []tls.CurveID{tls.CurveP256, tls.CurveP384, tls.CurveP521, tls.X25519},
 	}
 }
 
@@ -67,7 +67,7 @@ func getDefaultOptions() Options {
 		Headers: map[string]string{
 			"Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
 			"Accept-Language": "en-US,en;q=0.5",
-			"User-Agent":      browser.Firefox(),
+			"User-Agent":      browser.Random(),
 		},
 	}
 }

@@ -10,6 +10,8 @@ import (
 	"os"
 	"testing"
 
+	_ "github.com/joho/godotenv/autoload"
+
 	browser "github.com/EDDYCJY/fake-useragent"
 	cloudflarebp "github.com/m41k1n4177/cloudflare-bp-go"
 	"github.com/stretchr/testify/assert"
@@ -25,7 +27,7 @@ func TestApplyBypass(t *testing.T) {
 		assert.Equal(t, 403, res.StatusCode)
 	})
 
-	client.Transport = &http.Transport{TLSClientConfig: &tls.Config{CurvePreferences: []tls.CurveID{tls.X25519, tls.CurveP256}}}
+	client.Transport = &http.Transport{TLSClientConfig: &tls.Config{CurvePreferences: []tls.CurveID{tls.CurveP256, tls.CurveP384, tls.CurveP521, tls.X25519}}}
 
 	t.Run("modified client", func(t *testing.T) {
 		req, err := http.NewRequest(http.MethodGet, "https://www.patreon.com/login", nil)
@@ -59,7 +61,7 @@ func TestApplyCloudFlareByPassDefaultClient(t *testing.T) {
 	assert.Equal(t, 403, res.StatusCode)
 
 	// apply our bypass for request headers and client TLS configurations
-	http.DefaultClient.Transport = cloudflarebp.AddByPass(http.DefaultClient.Transport)
+	client.Transport = cloudflarebp.AddByPass(http.DefaultClient.Transport)
 	res, err = client.Get("https://www.patreon.com/login")
 	assert.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -81,11 +83,11 @@ func TestApplyCloudFlareByPassDefinedTransport(t *testing.T) {
 
 // TestAddByPassSocksProxy tests the CloudFlare bypass while we're using a SOCK5 proxy transport layer.
 func TestAddByPassSocksProxy(t *testing.T) {
+
 	auth := proxy.Auth{
 		User:     os.Getenv("PROXY_USER_SOCKS5"),
 		Password: os.Getenv("PROXY_PASS_SOCKS5"),
 	}
-
 	dialer, err := proxy.SOCKS5(
 		"tcp",
 		fmt.Sprintf("%s:%s", os.Getenv("PROXY_HOST_SOCKS5"), os.Getenv("PROXY_PORT_SOCKS5")),
