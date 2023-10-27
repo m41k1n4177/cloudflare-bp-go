@@ -71,7 +71,6 @@ func TestApplyCloudFlareByPassDefinedTransport(t *testing.T) {
 	client := &http.Client{
 		Transport: &http.Transport{},
 	}
-
 	// if the client requests something before applying the fix some configurations are applied already
 	// and our ByPass won't work anymore, so we have to apply our ByPass as the first thing
 	client.Transport = cloudflarebp.AddByPass(client.Transport)
