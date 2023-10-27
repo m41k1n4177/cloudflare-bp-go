@@ -13,8 +13,8 @@ on:
       - '**.sum'
 
 env:
-  PROXY_USER: ${{ secrets.PROXY_USER_HTTP }}
-  PROXY_PASS: ${{ secrets.PROXY_PASS_HTTP }}
+  PROXY_USER: ${{ secrets.PROXY_USER }}
+  PROXY_PASS: ${{ secrets.PROXY_PASS }}
   PROXY_HOST: ${{ secrets.PROXY_HOST }}
   PROXY_PORT_HTTP: ${{ secrets.PROXY_PORT_HTTP }}
   PROXY_PORT_SOCKS5: ${{ secrets.PROXY_PORT_SOCKS5 }}}
